@@ -15,3 +15,4 @@ public interface informeRepository extends JpaRepository<informe, Long> {
     @Query("SELECT i FROM informe i ORDER BY i.fechaGeneracion DESC")
     List<informe> listarinformesRecientes();
 }
+
