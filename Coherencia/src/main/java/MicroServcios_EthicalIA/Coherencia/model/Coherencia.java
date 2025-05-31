@@ -1,17 +1,19 @@
 package MicroServcios_EthicalIA.Coherencia.model;
 
-import jakarta.persistence.Entity;
+import jakarta.persistence.*;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 
+import java.time.LocalDateTime;
+
 @Entity
 @Table(name = "coherencia")
-@data
-@AllArgsConstructor
+@Data
 @NoArgsConstructor
+@AllArgsConstructor
 public class Coherencia {
 
         @Id
@@ -31,3 +33,4 @@ public class Coherencia {
     private LocalDateTime fechaAnalisis;
 
 }
+
