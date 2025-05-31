@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 
+@Repository
 public interface informeRepository extends JpaRepository<informe, Long> {
 
     List<informe> findByTextoId(Long textoId);

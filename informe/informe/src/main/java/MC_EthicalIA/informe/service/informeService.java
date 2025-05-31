@@ -4,6 +4,7 @@ import MC_EthicalIA.informe.model.informe;
 import MC_EthicalIA.informe.repository.informeRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 import java.util.Optional;
@@ -12,11 +13,10 @@ import java.util.Optional;
 @Transactional
 public class informeService {
 
+    @Autowired
     private final informeRepository repository;
 
-    public informeService(informeRepository repository) {
-        this.repository = repository;
-    }
+
 
     public List<informe> findAll() {
         return repository.findAll();

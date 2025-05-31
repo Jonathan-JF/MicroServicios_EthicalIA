@@ -4,6 +4,7 @@ import MC_EthicalIA.informe.model.informe;
 import MC_EthicalIA.informe.service.informeService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
@@ -11,11 +12,9 @@ import java.util.List;
 @RequestMapping("/api/v1/informes")
 public class informeController {
 
+    @Autowired
     private final informeService service;
 
-    public informeController(informeService service) {
-        this.service = service;
-    }
 
     @GetMapping
     public ResponseEntity<List<informe>> listar() {
