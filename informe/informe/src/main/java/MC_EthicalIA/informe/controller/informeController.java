@@ -13,7 +13,7 @@ import java.util.List;
 public class informeController {
 
     @Autowired
-    private final informeService service;
+    private informeService service;
 
 
     @GetMapping

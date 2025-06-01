@@ -14,7 +14,7 @@ import java.util.Optional;
 public class informeService {
 
     @Autowired
-    private final informeRepository repository;
+    private  informeRepository repository;
 
 
 
