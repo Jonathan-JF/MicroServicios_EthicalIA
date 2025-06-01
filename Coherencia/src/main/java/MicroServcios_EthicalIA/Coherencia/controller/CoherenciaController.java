@@ -12,14 +12,11 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/api/coherencia")
 public class CoherenciaController {
-
-    private final CoherenciaService coherenciaService;
-
+    
     @Autowired
-    public CoherenciaController(CoherenciaService coherenciaService) {
-        this.coherenciaService = coherenciaService;
-    }
+    private  CoherenciaService coherenciaService;
 
+    
     @PostMapping
     public Coherencia saveCoherencia(@RequestBody Coherencia coherencia) {
         return coherenciaService.saveCoherencia(coherencia);
