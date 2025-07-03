@@ -1,7 +1,7 @@
 package MicroServcios_EthicalIA.Coherencia;
 
-import com.ethicaia.model.Coherencia;
-import com.ethicaia.repository.CoherenciaRepository;
+import MicroServcios_EthicalIA.Coherencia.model.Coherencia;
+import MicroServcios_EthicalIA.Coherencia.repository.CoherenciaRepository;
 import net.datafaker.Faker;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Profile;
@@ -14,9 +14,9 @@ import java.util.Random;
 @Component
 public class DataLoader implements CommandLineRunner {
 
-    private final CoherenciaRepository coherenciaRepository;
+    private CoherenciaRepository coherenciaRepository;
 
-    public CoherenciaDataLoader(CoherenciaRepository coherenciaRepository) {
+    public DataLoader(CoherenciaRepository coherenciaRepository) {
         this.coherenciaRepository = coherenciaRepository;
     }
 
