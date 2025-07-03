@@ -1,7 +1,7 @@
 package Texto.Texto.controller;
 
-import com.ethicaia.model.Texto;
-import com.ethicaia.service.TextoService;
+import Texto.Texto.model.Texto;
+import Texto.Texto.service.TextoService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

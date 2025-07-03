@@ -1,7 +1,7 @@
 package Usuario.Usuario.service;
 
-import com.ethicaia.model.Usuario;
-import com.ethicaia.repository.UsuarioRepository;
+import Usuario.Usuario.model.Usuario;
+import Usuario.Usuario.repository.UsuarioRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 

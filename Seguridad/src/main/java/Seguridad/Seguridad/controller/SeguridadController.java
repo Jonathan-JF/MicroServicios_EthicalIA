@@ -1,7 +1,7 @@
 package Seguridad.Seguridad.controller;
 
-import com.ethicaia.model.Seguridad;
-import com.ethicaia.service.SeguridadService;
+import Seguridad.Seguridad.model.Seguridad;
+import Seguridad.Seguridad.service.SeguridadService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

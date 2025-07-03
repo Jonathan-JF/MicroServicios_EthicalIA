@@ -1,7 +1,7 @@
 package Seguridad.Seguridad.service;
 
-import com.ethicaia.model.Seguridad;
-import com.ethicaia.repository.SeguridadRepository;
+import Seguridad.Seguridad.model.Seguridad;
+import Seguridad.Seguridad.repository.SeguridadRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 

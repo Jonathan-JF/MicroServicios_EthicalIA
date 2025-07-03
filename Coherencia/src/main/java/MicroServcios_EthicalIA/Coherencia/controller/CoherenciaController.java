@@ -104,6 +104,14 @@ public class CoherenciaController {
         return coherenciaService.getRecentCoherencias();
     }
 
+    @Operation(
+        summary = "Obtener coherencia por ID (HATEOAS)",
+        description = "Devuelve una coherencia con enlaces HATEOAS para navegación RESTful."
+    )
+    @ApiResponses({
+        @ApiResponse(responseCode = "200", description = "Coherencia encontrada con enlaces HATEOAS"),
+        @ApiResponse(responseCode = "404", description = "Coherencia no encontrada")
+    })
     @GetMapping("/hateoas/{id}")
     public ResponseEntity<EntityModel<Coherencia>> obtenerCoherenciaPorIdHateoas(@PathVariable Long id) {
         Optional<Coherencia> coherenciaOpt = coherenciaService.getCoherenciaById(id);
@@ -119,6 +127,11 @@ public class CoherenciaController {
         return ResponseEntity.ok(recurso);
     }
 
+    @Operation(
+        summary = "Listar todas las coherencias (HATEOAS)",
+        description = "Devuelve una colección de coherencias con enlaces HATEOAS para navegación RESTful."
+    )
+    @ApiResponses(@ApiResponse(responseCode = "200", description = "Lista de coherencias con enlaces HATEOAS"))
     @GetMapping("/hateoas")
     public CollectionModel<EntityModel<Coherencia>> listarCoherenciasHateoas() {
         List<EntityModel<Coherencia>> coherencias = coherenciaService.getAllCoherencias().stream()
@@ -133,6 +146,11 @@ public class CoherenciaController {
         );
     }
 
+    @Operation(
+        summary = "Guardar coherencia (HATEOAS)",
+        description = "Guarda una coherencia y devuelve la ubicación del recurso creado con enlaces HATEOAS."
+    )
+    @ApiResponses(@ApiResponse(responseCode = "201", description = "Coherencia guardada correctamente"))
     @PostMapping("/hateoas")
     public ResponseEntity<?> guardarCoherenciaHateoas(@RequestBody Coherencia coherencia) {
         Coherencia guardada = coherenciaService.saveCoherencia(coherencia);
@@ -141,6 +159,11 @@ public class CoherenciaController {
         ).build();
     }
 
+    @Operation(
+        summary = "Eliminar coherencia por ID (HATEOAS)",
+        description = "Elimina una coherencia por su ID y devuelve una respuesta vacía."
+    )
+    @ApiResponses(@ApiResponse(responseCode = "204", description = "Coherencia eliminada correctamente"))
     @DeleteMapping("/hateoas/{id}")
     public ResponseEntity<?> eliminarCoherencia(@PathVariable Long id) {
         coherenciaService.deleteCoherencia(id);

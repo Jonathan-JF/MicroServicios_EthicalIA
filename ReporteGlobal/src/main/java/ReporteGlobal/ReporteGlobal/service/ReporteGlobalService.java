@@ -1,7 +1,7 @@
 package ReporteGlobal.ReporteGlobal.service;
 
-import com.ethicaia.model.ReporteGlobal;
-import com.ethicaia.repository.ReporteGlobalRepository;
+import ReporteGlobal.ReporteGlobal.model.ReporteGlobal;
+import ReporteGlobal.ReporteGlobal.repository.ReporteGlobalRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 

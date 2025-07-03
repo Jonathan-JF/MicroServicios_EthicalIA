@@ -93,6 +93,15 @@ public class EticaController {
         }
     }
 
+
+    @Operation(
+        summary = "Obtener análisis ético por ID (HATEOAS)",
+        description = "Devuelve un análisis ético con enlaces HATEOAS para navegación RESTful."
+    )
+    @ApiResponses({
+        @ApiResponse(responseCode = "200", description = "Análisis encontrado con enlaces HATEOAS"),
+        @ApiResponse(responseCode = "404", description = "No encontrado")
+    })
     @GetMapping("/hateoas/{id}")
     public ResponseEntity<EntityModel<Etica>> obtenerEticaPorIdHateoas(@PathVariable Long id) {
         Optional<Etica> eticaOpt = eticaService.getEticaById(id);
@@ -108,6 +117,11 @@ public class EticaController {
         return ResponseEntity.ok(recurso);
     }
 
+    @Operation(
+        summary = "Listar todos los análisis éticos (HATEOAS)",
+        description = "Devuelve una colección de análisis éticos con enlaces HATEOAS para navegación RESTful."
+    )
+    @ApiResponses(@ApiResponse(responseCode = "200", description = "Lista de análisis con enlaces HATEOAS"))
     @GetMapping("/hateoas")
     public CollectionModel<EntityModel<Etica>> listarEticasHateoas() {
         List<EntityModel<Etica>> eticas = eticaService.getAllEticas().stream()
@@ -122,6 +136,11 @@ public class EticaController {
         );
     }
 
+    @Operation(
+        summary = "Guardar análisis ético (HATEOAS)",
+        description = "Guarda un análisis ético y devuelve la ubicación del recurso creado con enlaces HATEOAS."
+    )
+    @ApiResponses(@ApiResponse(responseCode = "201", description = "Análisis guardado correctamente"))
     @PostMapping("/hateoas")
     public ResponseEntity<?> guardarEticaHateoas(@RequestBody Etica etica) {
         Etica guardada = eticaService.saveEtica(etica);
@@ -130,6 +149,11 @@ public class EticaController {
         ).build();
     }
 
+    @Operation(
+        summary = "Eliminar análisis ético por ID (HATEOAS)",
+        description = "Elimina un análisis ético por su ID y devuelve una respuesta vacía."
+    )
+    @ApiResponses(@ApiResponse(responseCode = "204", description = "Análisis eliminado correctamente"))
     @DeleteMapping("/hateoas/{id}")
     public ResponseEntity<?> eliminarEticaHateoas(@PathVariable Long id) {
         eticaService.deleteEtica(id);

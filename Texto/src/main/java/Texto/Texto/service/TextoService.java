@@ -1,7 +1,7 @@
 package Texto.Texto.service;
 
-import com.ethicaia.model.Texto;
-import com.ethicaia.repository.TextoRepository;
+import Texto.Texto.model.Texto;
+import Texto.Texto.repository.TextoRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 

@@ -1,7 +1,7 @@
 package Historial.Historial.service;
 
-import com.ethicaia.model.Historial;
-import com.ethicaia.repository.HistorialRepository;
+import Historial.Historial.model.Historial;
+import Historial.Historial.repository.HistorialRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 

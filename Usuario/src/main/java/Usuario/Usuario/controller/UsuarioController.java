@@ -1,7 +1,7 @@
 package Usuario.Usuario.controller;
 
-import com.ethicaia.model.Usuario;
-import com.ethicaia.service.UsuarioService;
+import Usuario.Usuario.model.Usuario;
+import Usuario.Usuario.service.UsuarioService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
