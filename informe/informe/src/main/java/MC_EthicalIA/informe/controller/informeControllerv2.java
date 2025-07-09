@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 import MC_EthicalIA.informe.model.informe;
 import MC_EthicalIA.informe.service.informeService;
+import MC_EthicalIA.informe.assembler.informeAssembler;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
@@ -25,6 +26,9 @@ public class informeControllerv2 {
 
     @Autowired
     private informeService service;
+
+    @Autowired
+    private informeAssembler assembler;
 
     @Operation(
         summary = "Obtener informe por ID (HATEOAS)",
@@ -40,13 +44,7 @@ public class informeControllerv2 {
         if (informeOpt.isEmpty()) {
             return ResponseEntity.notFound().build();
         }
-        informe inf = informeOpt.get();
-        EntityModel<informe> recurso = EntityModel.of(inf,
-                WebMvcLinkBuilder.linkTo(WebMvcLinkBuilder.methodOn(informeControllerv2.class).obtenerInformePorIdHateoas(id)).withSelfRel(),
-                WebMvcLinkBuilder.linkTo(WebMvcLinkBuilder.methodOn(informeControllerv2.class).listarInformesHateoas()).withRel("todos-los-informes"),
-                WebMvcLinkBuilder.linkTo(WebMvcLinkBuilder.methodOn(informeControllerv2.class).eliminarInformeHateoas(id)).withRel("eliminar")
-        );
-        return ResponseEntity.ok(recurso);
+        return ResponseEntity.ok(assembler.toModel(informeOpt.get()));
     }
 
     @Operation(
@@ -57,10 +55,7 @@ public class informeControllerv2 {
     @GetMapping("/hateoas")
     public CollectionModel<EntityModel<informe>> listarInformesHateoas() {
         List<EntityModel<informe>> informes = service.findAll().stream()
-                .map(inf -> EntityModel.of(inf,
-                        WebMvcLinkBuilder.linkTo(WebMvcLinkBuilder.methodOn(informeControllerv2.class).obtenerInformePorIdHateoas(inf.getId())).withRel("ver"),
-                        WebMvcLinkBuilder.linkTo(WebMvcLinkBuilder.methodOn(informeControllerv2.class).eliminarInformeHateoas(inf.getId())).withRel("eliminar")
-                ))
+                .map(assembler::toModel)
                 .collect(Collectors.toList());
         return CollectionModel.of(informes,
                 WebMvcLinkBuilder.linkTo(WebMvcLinkBuilder.methodOn(informeControllerv2.class).listarInformesHateoas()).withSelfRel(),
