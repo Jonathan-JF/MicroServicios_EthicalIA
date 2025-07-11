@@ -1,14 +1,18 @@
 package Usuario.Usuario;
 
+import Usuario.Usuario.controller.UsuarioController;
 import Usuario.Usuario.model.Usuario;
 import Usuario.Usuario.service.UsuarioService;
 import com.fasterxml.jackson.databind.ObjectMapper;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
@@ -19,7 +23,7 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-@WebMvcTest(UsuarioControllerTest.class)
+@WebMvcTest(UsuarioController.class)
 class UsuarioControllerTest {
 
     @Autowired
@@ -82,6 +86,7 @@ class UsuarioControllerTest {
     void actualizarUsuario() throws Exception {
         Usuario existente = new Usuario(4L, "actual@correo.com", "Actual Nombre", "USER", "clave");
         Usuario actualizado = new Usuario(4L, "actual@correo.com", "Nombre Actualizado", "ADMIN", "claveNueva");
+
         Mockito.when(service.findById(4L)).thenReturn(Optional.of(existente));
         Mockito.when(service.save(any(Usuario.class))).thenReturn(actualizado);
 

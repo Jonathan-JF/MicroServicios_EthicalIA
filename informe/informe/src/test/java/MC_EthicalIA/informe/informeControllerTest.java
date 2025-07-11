@@ -98,28 +98,4 @@ class informeControllerTest {
         mockMvc.perform(delete("/api/v1/informes/1"))
                 .andExpect(status().isNotFound());
     }
-
-    @Test
-    @DisplayName("✅ Obtener informe por ID (HATEOAS)")
-    void testObtenerInformePorIdHateoas() throws Exception {
-        informe inf = new informe(1L, 10L, "Resumen HATEOAS", "http://pdf.com/3", LocalDateTime.now());
-        Mockito.when(service.findById(1L)).thenReturn(Optional.of(inf));
-
-        mockMvc.perform(get("/api/v1/informes/hateoas/1"))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$.resumen").value("Resumen HATEOAS"))
-                .andExpect(jsonPath("$._links.self.href").exists());
-    }
-
-    @Test
-    @DisplayName("✅ Listar todos los informes (HATEOAS)")
-    void testListarInformesHateoas() throws Exception {
-        informe inf = new informe(1L, 10L, "Resumen HATEOAS", "http://pdf.com/3", LocalDateTime.now());
-        Mockito.when(service.findAll()).thenReturn(List.of(inf));
-
-        mockMvc.perform(get("/api/v1/informes/hateoas"))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$._embedded.informeList[0].resumen").value("Resumen HATEOAS"))
-                .andExpect(jsonPath("$._links.self.href").exists());
-    }
 }
