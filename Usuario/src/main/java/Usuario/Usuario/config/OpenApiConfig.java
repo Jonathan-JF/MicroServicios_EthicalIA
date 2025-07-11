@@ -3,8 +3,10 @@ package Usuario.Usuario.config;
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.info.Info;
 import io.swagger.v3.oas.models.info.Contact;
+import io.swagger.v3.oas.models.info.License;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+
 
 @Configuration
 public class OpenApiConfig {
@@ -13,12 +15,16 @@ public class OpenApiConfig {
     public OpenAPI customOpenAPI() {
         return new OpenAPI()
             .info(new Info()
-                .title("API de Usuarios")
-                .version("1.0")
-                .description("Documentación de la API para el microservicio de usuarios")
+                .title("Microservicio de Usuarios - EthicalIA")
+                .version("1.0.0")
+                .description("API para la gestión de usuarios generados por el microservicio EthicalIA")
                 .contact(new Contact()
-                    .name("Equipo Usuarios")
-                    .email("soporte@usuarios.com")
+                    .name("Equipo EthicalIA")
+                    .email("contacto@ethicalia.com")
+                )
+                .license(new License()
+                    .name("MIT License")
+                    .url("https://opensource.org/licenses/MIT")
                 )
             );
     }

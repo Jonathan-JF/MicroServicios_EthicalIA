@@ -4,13 +4,11 @@ import MicroServcios_EthicalIA.Coherencia.model.Coherencia;
 import MicroServcios_EthicalIA.Coherencia.repository.CoherenciaRepository;
 import net.datafaker.Faker;
 import org.springframework.boot.CommandLineRunner;
-import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
 import java.util.Random;
 
-@Profile("dev")
 @Component
 public class DataLoader implements CommandLineRunner {
 

@@ -1,4 +1,4 @@
-package Texto.Texto.config;
+package Seguridad.Seguridad.config;
 
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.info.Info;
@@ -7,7 +7,6 @@ import io.swagger.v3.oas.models.info.License;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-
 @Configuration
 public class OpenApiConfig {
 
@@ -15,9 +14,9 @@ public class OpenApiConfig {
     public OpenAPI customOpenAPI() {
         return new OpenAPI()
             .info(new Info()
-                .title("Microservicio de Texto - EthicalIA")
+                .title("Microservicio de Seguridad - EthicalIA")
                 .version("1.0.0")
-                .description("API para la gestión de textos generados por el microservicio EthicalIA")
+                .description("API para la gestión de la seguridad en el microservicio EthicalIA.")
                 .contact(new Contact()
                     .name("Equipo EthicalIA")
                     .email("contacto@ethicalia.com")
@@ -29,3 +28,4 @@ public class OpenApiConfig {
             );
     }
 }
+
